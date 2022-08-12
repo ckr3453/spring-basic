@@ -70,3 +70,11 @@
 
 회원을 메모리가 아닌 실제 DB에서 조회하고, 정률 할인 정책(주문 금액에 따라 % 할인)을 지원해도 주문 서비스를 변경하지 않아도 된다.
 협력 관계를 그대로 재사용 할 수 있다.
+
+### 새로운 할인 정책 개발
+
+**기존 요구사항 변경**
+할인 정책을 기존의 고정 금액 할인이 아닌 금액당 할인하는 정률% 할인으로 변경해야함. 이를 위해 기존의 FixDiscountPolicy를 대체할 RateDiscountPolicy를 구현
+
+![image](https://user-images.githubusercontent.com/36228833/184383609-7de0b82b-209c-4ce4-8a14-da0ef3ccdb8a.png)
+
