@@ -176,7 +176,7 @@ public class OrderServiceImpl implements OrderService {
 - **DIP 완성:** MemberServiceImpl 은 MemberRepository 인 추상에만 의존하면 된다. 이제 구체 클래스를 몰라도 된다.
 - **관심사의 분리:** 객체를 생성하고 연결하는 역할과 실행하는 역할이 명확히 분리되었다.
 
-** 그림 - 회원 객체 인스턴스 다이어그램
+**그림 - 회원 객체 인스턴스 다이어그램
 
 ![image](https://user-images.githubusercontent.com/36228833/184391280-b26474e0-547c-4f77-bc66-0f5866ae8a08.png)
 
