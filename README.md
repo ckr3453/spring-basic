@@ -75,7 +75,7 @@
 
 **기존 요구사항 변경**
 
-할인 정책을 [기존의 고정 금액 할인](##-비즈니스-요구사항과-설계)이 아닌 금액당 할인하는 정률% 할인으로 변경해야함. 이를 위해 기존의 FixDiscountPolicy를 대체할 RateDiscountPolicy를 구현
+할인 정책을 [기존의 고정 금액 할인](#비즈니스-요구사항과-설계)이 아닌 금액당 할인하는 정률% 할인으로 변경해야함. 이를 위해 기존의 FixDiscountPolicy를 대체할 RateDiscountPolicy를 구현
 
 ![image](https://user-images.githubusercontent.com/36228833/184383609-7de0b82b-209c-4ce4-8a14-da0ef3ccdb8a.png)
 
