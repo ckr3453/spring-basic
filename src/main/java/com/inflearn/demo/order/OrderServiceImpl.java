@@ -1,16 +1,18 @@
 package com.inflearn.demo.order;
 
 import com.inflearn.demo.discount.DiscountPolicy;
-import com.inflearn.demo.discount.FixDiscountPolicy;
-import com.inflearn.demo.discount.RateDiscountPolicy;
 import com.inflearn.demo.member.Member;
 import com.inflearn.demo.member.MemberRepository;
-import com.inflearn.demo.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
-    private DiscountPolicy discountPolicy;
+    private final MemberRepository memberRepository;
+    private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
