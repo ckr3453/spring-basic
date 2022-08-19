@@ -17,4 +17,9 @@ public class MemberServiceImpl implements MemberService {
     public Member findMember(Long memberId) {
         return memberRepository.findById(memberId);
     }
+
+    // 테스트용 (싱글톤 패턴이 깨지는지)
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }

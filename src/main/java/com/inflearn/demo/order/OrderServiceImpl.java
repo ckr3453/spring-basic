@@ -21,4 +21,9 @@ public class OrderServiceImpl implements OrderService{
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
     }
+
+    // 테스트용 (싱글톤 패턴이 깨지는지)
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
+    }
 }
