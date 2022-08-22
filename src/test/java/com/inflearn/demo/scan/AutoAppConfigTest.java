@@ -1,8 +1,9 @@
 package com.inflearn.demo.scan;
 
 import com.inflearn.demo.AutoAppConfig;
+import com.inflearn.demo.member.MemberRepository;
 import com.inflearn.demo.member.MemberService;
-import org.assertj.core.api.Assertions;
+import com.inflearn.demo.order.OrderServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -18,5 +19,16 @@ public class AutoAppConfigTest {
 
         MemberService bean = ac.getBean(MemberService.class);
         assertThat(bean).isInstanceOf(MemberService.class);
+
+        OrderServiceImpl bean1 = ac.getBean(OrderServiceImpl.class);
+        MemberRepository memberRepository = bean1.getMemberRepository();
+        System.out.println("memberRepository = " + memberRepository);
+    }
+
+    @Test
+    @DisplayName("필드로 주입 테스트 (필드변경을 할수 없으므로 실패)")
+    void fieldInjectionTest() {
+//        OrderServiceImpl orderService = new OrderServiceImpl();
+//        orderService.createOrder(1L, "itemA", 10000);
     }
 }
