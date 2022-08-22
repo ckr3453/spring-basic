@@ -2,7 +2,9 @@ package com.inflearn.demo.discount;
 
 import com.inflearn.demo.member.Grade;
 import com.inflearn.demo.member.Member;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RateDiscountPolicy implements DiscountPolicy {
 
     private int discountPercent = 10;
