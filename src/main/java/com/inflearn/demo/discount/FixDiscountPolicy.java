@@ -2,7 +2,10 @@ package com.inflearn.demo.discount;
 
 import com.inflearn.demo.member.Grade;
 import com.inflearn.demo.member.Member;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+@Component
 public class FixDiscountPolicy implements DiscountPolicy{
 
     private int discountFixAmount = 1000; // 할인금액

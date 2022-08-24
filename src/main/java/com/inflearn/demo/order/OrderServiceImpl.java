@@ -1,20 +1,27 @@
 package com.inflearn.demo.order;
 
+import com.inflearn.demo.annotation.MainDiscountPolicy;
 import com.inflearn.demo.discount.DiscountPolicy;
 import com.inflearn.demo.member.Member;
 import com.inflearn.demo.member.MemberRepository;
 import com.inflearn.demo.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 @Component  // 컴포넌트 스캔 대상
-@RequiredArgsConstructor    // 롬복으로 인자가 있는 생성자 자동생성
+//@RequiredArgsConstructor    // 롬복으로 인자가 있는 생성자 자동생성
 public class OrderServiceImpl implements OrderService{
 
     /* 생성자로 주입 (권장하는 방식) */
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
+
+    public OrderServiceImpl(MemberRepository memberRepository, @MainDiscountPolicy DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
 
     /* setter로 주입 (필드가 수정이 가능하며 불멸, 필수가 아닌경우 사용) */
 //    private MemberRepository memberRepository;
