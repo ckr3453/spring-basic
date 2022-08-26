@@ -3,12 +3,15 @@ package com.inflearn.demo.scope;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Scope;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.inject.Provider;
 
 public class SingletonWithPrototypeTest1 {
 
@@ -37,21 +40,28 @@ public class SingletonWithPrototypeTest1 {
 
         ClientBean clientBean2 = ac.getBean(ClientBean.class);
         int count2 = clientBean2.logic();
-        Assertions.assertThat(count2).isEqualTo(2);
+        Assertions.assertThat(count2).isEqualTo(1);
     }
 
     @Scope("singleton")
     static class ClientBean {
-        private final PrototypeBean prototypeBean;
+//        private final PrototypeBean prototypeBean;
+
+        // Dependency Lookup (의존관계 탐색) -> 외부에서 의존관계 주입되는게아니라 직접 조회
+//        private ObjectFactory<PrototypeBean> prototypeBeanProvider;
+//        private ObjectProvider<PrototypeBean> prototypeBeanProvider;
+        private Provider<PrototypeBean> prototypeBeanProvider;
 
         @Autowired
-        public ClientBean(PrototypeBean prototypeBean) {
-            this.prototypeBean = prototypeBean;     // 객체 생성시점에 주입
+        public ClientBean(Provider<PrototypeBean> prototypeBeanProvider) {
+            this.prototypeBeanProvider = prototypeBeanProvider;     // 객체 생성시점에 주입
         }
 
         public int logic(){
-            prototypeBean.addCount();
-            return prototypeBean.getCount();
+//            PrototypeBean object = prototypeBeanProvider.getObject();
+            PrototypeBean object = prototypeBeanProvider.get();
+            object.addCount();
+            return object.getCount();
         }
     }
 
